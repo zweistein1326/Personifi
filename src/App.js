@@ -11,16 +11,6 @@ import moment from 'moment';
 
 const store = configureStore();
 
-store.dispatch(addExpense({ title: 'Water Bill', amount: 45, date: moment.now() }))
-store.dispatch(addExpense({ title: 'Electricity Bill', amount: 100, date: moment.now() }))
-store.dispatch(addExpense({ title: 'Gas Bill', amount: 60, date: moment.now() }))
-store.dispatch(searchByText())
-store.dispatch(sortByAmount())
-
-const state = store.getState();
-const visibleExpenses = getVisibleExpenses(state.expenses, state.filters);
-
-
 function App() {
   return (
     <div className="App">

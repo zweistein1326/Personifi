@@ -1,8 +1,10 @@
-export default (expenses, { text, sortBy }) => {
+export default (expenses, { text = '', sortBy = 'date' }) => {
     return expenses.filter((expense) => {
-        const textMatch = expense.title.toLowerCase().includes(text.toLowerCase());
-
-        return textMatch;
+        console.log(expense)
+        if (expense) {
+            const textMatch = expense.title.toLowerCase().includes(text.toLowerCase());
+            return textMatch;
+        }
     }).sort((a, b) => {
         if (sortBy === 'date') {
             return a.date < b.date ? 1 : -1;
