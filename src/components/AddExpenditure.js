@@ -1,25 +1,27 @@
 import React from 'react';
-import firebase from 'firebase';
-import moment from 'moment';
-import ShowExpenses from './ShowExpenses';
-import { addExpense } from '../actions/expenses';
+import { addExpense, startAddExpense } from '../actions/expenses';
 import { connect } from 'react-redux';
 import ExpenseForm from './ExpenseForm';
 
-const AddExpenditure = ({ dispatch, history }) => {
-    return (
-        <div>
-            <h3> Add Expense </h3>
-            <ExpenseForm
-                onSubmit={(expense) => {
-                    dispatch(addExpense(expense))
-                    history.push('/')
-                }} />
-            {/* <ShowExpenses /> */}
-        </div>
-    );
+class AddExpenditure extends React.Component {
+    onSubmit = (expense) => {
+        this.props.startAddExpense(expense);
+        this.props.history.push('/')
+    }
+    render() {
+        return (
+            <div>
+                <h3> Add Expense </h3>
+                <ExpenseForm
+                    onSubmit={this.onSubmit} />
+                {/* <ShowExpenses /> */}
+            </div >
+        );
+    }
 }
 
-const mapStateToProps = (dispatch) => { }
+const mapStateToProps = (dispatch) => ({
+    startAddExpense: (expense) => dispatch(startAddExpense(expense))
+})
 
-export default connect()(AddExpenditure);
+export default connect(undefined, mapStateToProps)(AddExpenditure);

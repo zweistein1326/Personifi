@@ -1,5 +1,5 @@
 import React from 'react';
-
+import styles from './inputBudget.module.css';
 
 class InputBudget extends React.Component {
     constructor(props) {
@@ -29,7 +29,7 @@ class InputBudget extends React.Component {
     }
     render() {
         return (
-            <div>
+            <div id={styles.inputBudget}>
                 <form onSubmit={this.enableEdit}>
                     <label>Budget for the month of April(HKD)</label>
                     {this.state.enableEdit ? <input type="text" id="budget" name="budget" value={this.state.budget} onChange={this.handleBudgetChange} /> : <p>HKD {this.state.budget}</p>}

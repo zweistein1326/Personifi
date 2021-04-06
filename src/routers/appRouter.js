@@ -9,7 +9,7 @@ import Dashboard from '../components/dashboard'
 import AddExpenditure from '../components/AddExpenditure';
 // import InputBudget from '../components/inputBudget';
 import NotFoundPage from '../components/404';
-import Header from '../components/Header';
+import Header from '../components/Header/Header';
 import EditExpensePage from '../components/EditExpensePage';
 
 const AppRouter = () => {

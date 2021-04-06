@@ -1,32 +1,42 @@
-import firebase from 'firebase';
-import React from 'react';
+import database from '../firebase/firebase';
 import { v4 as uuid } from 'uuid'
 
-var firebaseConfig = {
-    apiKey: "AIzaSyBIUW4LS63yOoAF_2ZnwfWZ0elZQm94DsE",
-    authDomain: "financialcontrol-d8deb.firebaseapp.com",
-    projectId: "financialcontrol-d8deb",
-    storageBucket: "financialcontrol-d8deb.appspot.com",
-    messagingSenderId: "836595732873",
-    appId: "1:836595732873:web:b49fac44ccb6db90d4d158",
-    measurementId: "G-F3CCBH56VZ"
-};
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-firebase.analytics();
-
-const database = firebase.database();
-
-
-export const addExpense = ({ title = '', amount = 0, date = '' }) => ({
+export const addExpense = (expense) => ({
     type: 'ADD_EXPENSE',
-    expense: { id: uuid(), title, amount, date }
+    expense
 })
+
+export const startAddExpense = (expenseData = {}) => {
+    return (dispatch) => {
+        const {
+            title = '',
+            note = '',
+            amount = 0,
+            date = 0
+        } = expenseData;
+        const expense = { title, note, amount, date };
+
+        return database.ref('Expenses').push(expense).then((childSnapshot) => {
+            dispatch(addExpense({
+                id: childSnapshot.key,
+                ...expense
+            }));
+        });
+    };
+}
 
 export const removeExpense = ({ id }) => ({
     type: 'REMOVE_EXPENSE',
     id
 });
+
+export const startRemoveExpense = ({ id } = {}) => {
+    return (dispatch) => {
+        return database.ref(`expenses/${id}`).remove().then(() => {
+            dispatch(removeExpense({ id }));
+        });
+    };
+};
 
 export const editExpense = (id, updates) => {
     return {
@@ -35,3 +45,31 @@ export const editExpense = (id, updates) => {
         updates
     }
 }
+
+export const startEditExpense = (id, updates) => {
+    return (dispatch) => {
+        return database.ref(`expenses/${id}`).update(updates).then(() => {
+            dispatch(editExpense(id, updates));
+        });
+    };
+};
+
+export const setExpenses = (expenses) => ({
+    type: 'SET_EXPENSES',
+    expenses
+});
+
+export const startSetExpenses = () => {
+    return (dispatch) => {
+        return database.ref('Expenses').once('value').then((snapshot) => {
+            const expenses = [];
+            snapshot.forEach((childSnapshot) => {
+                expenses.push({
+                    id: childSnapshot.key,
+                    ...childSnapshot.val()
+                });
+            });
+            dispatch(setExpenses(expenses));
+        });
+    };
+};
