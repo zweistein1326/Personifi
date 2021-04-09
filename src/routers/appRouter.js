@@ -13,7 +13,7 @@ import AddExpenditure from '../components/AddExpenditure/AddExpenditure';
 import NotFoundPage from '../components/404';
 import Header from '../components/Header/Header';
 import EditExpensePage from '../components/EditExpensePage/EditExpensePage';
-import LoginPage from '../components/LoginPage';
+import LoginPage from '../components/LoginPage/LoginPage';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 export const history = createBrowserHistory();
