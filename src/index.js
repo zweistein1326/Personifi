@@ -1,18 +1,59 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
-import firebase from 'firebase/app';
+import { Provider } from 'react-redux';
+import { firebase } from './firebase/firebase'
+import AppRouter, { history } from './routers/appRouter';
+import { startSetExpenses } from './actions/expenses';
+import configureStore from './store/configureStore';
+import { login, logout } from './actions/auth';
+import './App.css';
+
+const store = configureStore();
 
 
+let hasRendered = false;
+
+const jsx = (
+  <div className="App">
+    <Provider store={store}>
+      <AppRouter />
+    </Provider>
+  </div>
+);
+
+const renderApp = () => {
+  if (!hasRendered) {
+    ReactDOM.render(
+      jsx,
+      document.getElementById('root')
+    );
+    hasRendered = true;
+  }
+}
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <p>Loading...</p>,
   document.getElementById('root')
 );
+
+firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+    store.dispatch(login(user.uid))
+    store.dispatch(startSetExpenses()).then(() => {
+      renderApp();
+      if (history.location.pathname === '/') {
+        history.push('/dashboard')
+      }
+    })
+  }
+  else {
+    store.dispatch(logout())
+    renderApp();
+    history.push('/');
+  }
+})
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

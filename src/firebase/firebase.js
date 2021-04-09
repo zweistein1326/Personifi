@@ -1,5 +1,6 @@
 import firebase from 'firebase';
 
+
 var firebaseConfig = {
     apiKey: "AIzaSyBIUW4LS63yOoAF_2ZnwfWZ0elZQm94DsE",
     authDomain: "financialcontrol-d8deb.firebaseapp.com",
@@ -15,7 +16,9 @@ firebase.analytics();
 
 const database = firebase.database();
 
-export { firebase, database as default };
+const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
+
+export { firebase, googleAuthProvider, database as default };
 
 
 

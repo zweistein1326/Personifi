@@ -1,0 +1,25 @@
+.tile{
+    background-color: var(--black);
+    padding:0.2rem;
+    margin:0.2rem;
+    border-radius: 20px;
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.link{
+    width: 80%;
+ display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+
+.expenseTile:hover{
+    transition: 0.2s all ease-in-out ;
+    background-color: black;
+    color: white;
+}

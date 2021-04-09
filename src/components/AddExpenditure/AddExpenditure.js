@@ -1,12 +1,12 @@
 import React from 'react';
-import { addExpense, startAddExpense } from '../actions/expenses';
+import { addExpense, startAddExpense } from '../../actions/expenses';
 import { connect } from 'react-redux';
-import ExpenseForm from './ExpenseForm';
+import ExpenseForm from '../ExpenseForm/ExpenseForm';
 
 class AddExpenditure extends React.Component {
     onSubmit = (expense) => {
         this.props.startAddExpense(expense);
-        this.props.history.push('/')
+        this.props.history.push('/dashboard')
     }
     render() {
         return (

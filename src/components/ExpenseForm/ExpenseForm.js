@@ -2,7 +2,8 @@ import React from 'react';
 import moment from 'moment';
 import { SingleDatePicker } from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
-import 'react-dates/initialize'
+import 'react-dates/initialize';
+import styles from './expenseForm.module.css'
 
 
 export default class ExpenseForm extends React.Component {
@@ -58,24 +59,24 @@ export default class ExpenseForm extends React.Component {
 
     render() {
         return (
-            <div>
+            <div id={styles.expenseForm}>
                 <form onSubmit={this.handleSubmit}>
                     <input
                         type="text"
                         placeholder="Title"
                         autoFocus={true}
                         value={this.state.title}
-                        onChange={this.onTitleChange} />
+                        onChange={this.onTitleChange}
+                        className={styles.input} />
+                    <br />
                     <input
                         type="text"
                         placeholder="Amount"
                         autoFocus={true}
                         value={this.state.amount}
-                        onChange={this.onAmountChange} />
-                    {/* <input
-                type="date"
-                placeholder="date"
-                autoFocus={true} /> */}
+                        onChange={this.onAmountChange}
+                        className={styles.input} />
+                    <br />
                     <SingleDatePicker
                         date={this.state.date}
                         onDateChange={this.onDateChange}
@@ -84,8 +85,14 @@ export default class ExpenseForm extends React.Component {
                         numberOfMonths={1}
                         isOutsideRange={(day) => false}
                     />
-                    <textarea placeholder="Note" value={this.state.note} onChange={this.onNoteChange}></textarea>
-                    <button>Confirm Expense</button>
+                    <br />
+                    <textarea placeholder="Note"
+                        value={this.state.note}
+                        onChange={this.onNoteChange}
+                        className={styles.note}
+                    ></textarea>
+                    <br />
+                    <button className={styles.submitButton}>Confirm Expense</button>
                 </form>
                 {this.state.error ? <p>{this.state.error}</p> : null}
             </div >

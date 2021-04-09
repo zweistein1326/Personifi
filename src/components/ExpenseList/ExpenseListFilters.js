@@ -1,13 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { searchByText, sortByAmount, sortByDate } from '../actions/filters';
+import { searchByText, sortByAmount, sortByDate } from '../../actions/filters';
+import styles from './expenseListFilters.module.css';
 
 const ExpenseListFilters = (props) => (
-    <div>
-        <label>Select Filter</label>
-        <input type="text" value={props.filters.text} onChange={(e) => {
-            props.dispatch(searchByText(e.target.value));
-        }} />
+    <div id={styles.filters}>
+        <input type="text"
+            value={props.filters.text}
+            placeholder="search by title"
+            className={styles.searchInput}
+            onChange={(e) => {
+                props.dispatch(searchByText(e.target.value));
+            }} />
         <select value={props.filters.sortBy}
             onChange={(e) => {
                 if (e.target.value === 'date') {

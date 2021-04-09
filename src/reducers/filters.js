@@ -1,4 +1,4 @@
-const filterReducerDefaultState = { sortBy: '' }
+const filterReducerDefaultState = { sortBy: '', text: '' }
 
 export default (state = filterReducerDefaultState, action) => {
     switch (action.type) {
