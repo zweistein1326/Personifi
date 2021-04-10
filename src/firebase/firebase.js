@@ -1,7 +1,10 @@
-import firebase from 'firebase';
+import firebase from 'firebase/app';
 
 
 console.log(process.env.FIREBASE_PROJECT_ID);
+console.log(process.env.FIREBASE_API_KEY);
+console.log(process.env.FIREBASE_AUTH_DOMAIN);
+console.log(process.env.FIREBASE_STORAGE_BUCKET);
 
 var firebaseConfig = {
     apiKey: process.env.FIREBASE_API_KEY,
