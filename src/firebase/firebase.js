@@ -2,10 +2,10 @@ import firebase from 'firebase';
 
 
 var firebaseConfig = {
-    apiKey: "AIzaSyBIUW4LS63yOoAF_2ZnwfWZ0elZQm94DsE",
-    authDomain: "financialcontrol-d8deb.firebaseapp.com",
-    projectId: "financialcontrol-d8deb",
-    storageBucket: "financialcontrol-d8deb.appspot.com",
+    apiKey: process.env.FIREBASE_API_KEY,
+    authDomain: process.env.FIREBASE_API_KEY,
+    projectId: process.env.FIREBASE_API_KEY,
+    storageBucket:  process.env.FIREBASE_API_KEY,
     messagingSenderId: "836595732873",
     appId: "1:836595732873:web:b49fac44ccb6db90d4d158",
     measurementId: "G-F3CCBH56VZ"
