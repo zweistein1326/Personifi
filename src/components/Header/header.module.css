@@ -1,11 +1,11 @@
 .isActive{
-    color:red;
+    color:darkblue;
     font-weight: bold;
     transition: all 0.1s ease;
 }
 
 a{
-    color:orange;
+    color:darkblue;
     transition: all 0.1s ease;
 }
 
