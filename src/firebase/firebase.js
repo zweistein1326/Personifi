@@ -1,6 +1,8 @@
 import firebase from 'firebase';
 
 
+console.log(process.env.FIREBASE_PROJECT_ID);
+
 var firebaseConfig = {
     apiKey: process.env.FIREBASE_API_KEY,
     authDomain: process.env.FIREBASE_AUTH_DOMAIN,
