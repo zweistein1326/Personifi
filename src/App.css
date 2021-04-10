@@ -15,7 +15,7 @@ body{
   margin:0;
   padding: 0;
   color:var(--black);
-  background-color: var(--linen);
+  /* background-color: #cccccc; */
 }
 
 h1{

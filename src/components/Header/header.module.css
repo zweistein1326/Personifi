@@ -1,13 +1,14 @@
 .isActive{
-    color:black;
+    color:red;
     font-weight: bold;
     transition: all 0.1s ease;
 }
 
 a{
-    color:#333333;
+    color:orange;
     transition: all 0.1s ease;
 }
+
 a:visited{
       text-decoration: none;
 }

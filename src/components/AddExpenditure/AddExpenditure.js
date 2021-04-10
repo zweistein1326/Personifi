@@ -11,7 +11,7 @@ class AddExpenditure extends React.Component {
     render() {
         return (
             <div>
-                <h3> Add Expense </h3>
+                {/* <h3> Add Expense </h3> */}
                 <ExpenseForm
                     onSubmit={this.onSubmit} />
                 {/* <ShowExpenses /> */}

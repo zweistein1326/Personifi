@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom'
 import styles from './expenseTile.module.css'
 import { connect } from 'react-redux';
 import { startRemoveExpense } from '../../actions/expenses';
-import { BsTrashFill } from 'react-icons/bs'
+import { BsTrashFill, BsPencil } from 'react-icons/bs'
+import { RiPencilFill } from 'react-icons/ri'
 
 function ExpenseTile({ startRemoveExpense, date, title, amount, id }) {
     return (
@@ -13,8 +14,10 @@ function ExpenseTile({ startRemoveExpense, date, title, amount, id }) {
             <td>{title}</td>
             <td>HKD {`${amount / 100}`}</td>
             <td>
-                <Link to={`/editExpense/${id}`} color="red">edit</Link>
-                <Link to={`/editExpense/${id}`} color="red">delete</Link>
+                <Link to={`/editExpense/${id}`} color="red"><RiPencilFill size="18px" color="orange" /></Link>
+                &nbsp;
+                &nbsp;
+                <BsTrashFill color="red" size="18px" onClick={() => { startRemoveExpense({ id }) }} />
             </td>
         </tr>
         // <div className={styles.tile} key={id}>

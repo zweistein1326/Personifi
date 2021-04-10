@@ -4,17 +4,25 @@
 
 .expensesTable{
     width: 100%;
-    min-height:40vh;
+    height:70vh;
    text-align: center;
    border: 2px solid black;
    border-radius: 20px;
+   overflow-y: scroll;
 }
 
 .expensesTable tr{   
     transition: 0.2s all ease-in-out ;
+    min-height:20px;
 }
 
 .expensesTable td,th{
     padding: .6rem;
+    /* height: 8%; */
     /* margin: 1rem; */
+}
+
+.total{
+    text-align: right;
+    padding: 0 12px ;
 }
