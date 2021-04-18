@@ -9,8 +9,8 @@ import { RiPencilFill } from 'react-icons/ri'
 
 function ExpenseTile({ startRemoveExpense, date, title, amount, id }) {
     return (
-        <tr className={styles.expenseTile}>
-            <td>{moment(date).format('MMMM Do YYYY')}</td>
+        <tr className={styles.tile}>
+            <td>{moment(date).format('MMMM Do, YYYY')}</td>
             <td>{title}</td>
             <td>HKD {`${amount / 100}`}</td>
             <td>

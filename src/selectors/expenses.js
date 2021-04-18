@@ -1,7 +1,7 @@
 export default (expenses, { text = '', sortBy = 'date' }) => {
     return expenses.filter((expense) => {
         if (expense) {
-            const textMatch = expense.title.toLowerCase().includes(text.toLowerCase());
+            const textMatch = expense.title.toLowerCase().includes(text.toLowerCase()) || expense.note.toLowerCase().includes(text.toLowerCase());
             return textMatch;
         }
     }).sort((a, b) => {

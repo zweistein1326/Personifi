@@ -13,6 +13,7 @@ const ExpenseListFilters = (props) => (
                 props.dispatch(searchByText(e.target.value));
             }} />
         <select value={props.filters.sortBy}
+            className={styles.filterInput}
             onChange={(e) => {
                 if (e.target.value === 'date') {
                     props.dispatch(sortByDate())
