@@ -14,6 +14,7 @@ const store = configureStore();
 
 
 let hasRendered = false;
+console.log(process.env)
 
 const jsx = (
   <div className="App">
