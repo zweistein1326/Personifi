@@ -17,7 +17,7 @@ export default class ExpenseForm extends React.Component {
             date: props.expense ? moment(props.expense.date) : moment(),
             focused: false,
             error: '',
-            currency: 'HKD'
+            currency: props.expense ? props.expense.currency : 'HKD'
         }
     }
 
@@ -68,8 +68,8 @@ export default class ExpenseForm extends React.Component {
 
     render() {
         return (
-            <div id={styles.expenseForm}>
-                <form onSubmit={this.handleSubmit}>
+            <div>
+                <form onSubmit={this.handleSubmit} id={styles.expenseForm}>
                     <input
                         type="text"
                         placeholder="Title"
@@ -80,8 +80,8 @@ export default class ExpenseForm extends React.Component {
                     <br />
                     <div className={styles.amountInput}>
                         <SelectCurrency
-                            className={styles.input}
-                            value={this.state.currency || 'HKD'}
+                            className={styles.currencyInput}
+                            value={this.state.currency}
                             onChange={this.onSelectedCurrency}
                             name='currency'
                         />
@@ -91,7 +91,7 @@ export default class ExpenseForm extends React.Component {
                             autoFocus={true}
                             value={this.state.amount}
                             onChange={this.onAmountChange}
-                            className={styles.input}
+                            className={styles.valueInput}
                         />
                     </div>
                     <br />
@@ -102,6 +102,7 @@ export default class ExpenseForm extends React.Component {
                         onFocusChange={({ focused }) => this.setState({ focused })}
                         numberOfMonths={1}
                         isOutsideRange={(day) => false}
+                        className={styles.input}
                     />
                     <br />
                     <textarea placeholder="Note"

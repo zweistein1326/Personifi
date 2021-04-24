@@ -17,7 +17,11 @@ function ExpenseTile({ startRemoveExpense, date, title, amount, id, currency }) 
                 <Link to={`/editExpense/${id}`} color="red"><RiPencilFill size="18px" color="orange" /></Link>
                 &nbsp;
                 &nbsp;
-                <BsTrashFill color="red" size="18px" onClick={() => { startRemoveExpense({ id }) }} />
+                <BsTrashFill color="red" size="18px" onClick={() => {
+                    if (window.confirm('Are you sure you want to delete this expense?')) {
+                        startRemoveExpense({ id })
+                    }
+                }} />
             </td>
         </tr>
         // <div className={styles.tile} key={id}>

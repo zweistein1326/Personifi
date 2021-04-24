@@ -7,9 +7,10 @@ import styles from './EditExpensePage.module.css';
 
 class EditExpensePage extends React.Component {
     onRemove = () => {
-        console.log(this.props.expense.id)
-        this.props.startRemoveExpense({ id: this.props.expense.id })
-        this.props.history.push('/dashboard')
+        if (window.confirm('Are you sure you want to delete this expense?')) {
+            this.props.startRemoveExpense({ id: this.props.expense.id })
+            this.props.history.push('/dashboard')
+        }
     }
     onSubmit = (expense) => {
         this.props.startEditExpense({ id: this.props.expense.id, updates: expense })
