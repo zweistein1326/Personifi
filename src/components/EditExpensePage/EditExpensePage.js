@@ -3,6 +3,7 @@ import ExpenseForm from '../ExpenseForm/ExpenseForm';
 import { connect } from 'react-redux';
 import { startEditExpense, startRemoveExpense } from '../../actions/expenses';
 // import ExpenseForm from './ExpenseForm'
+import styles from './EditExpensePage.module.css';
 
 class EditExpensePage extends React.Component {
     onRemove = () => {
@@ -17,8 +18,10 @@ class EditExpensePage extends React.Component {
     render() {
         return (
             <div>
-                <h1><ExpenseForm expense={this.props.expense} onSubmit={this.onSubmit} /></h1>
-                <button onClick={this.onRemove}>Remove Expense</button>
+                <ExpenseForm expense={this.props.expense} onSubmit={this.onSubmit} />
+                <div style={{ width: '100%', textAlign: 'center' }}>
+                    <button className={styles.deleteButton} onClick={this.onRemove}>Remove Expense</button>
+                </div>
             </div >);
     }
 }

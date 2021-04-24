@@ -2,7 +2,9 @@ export default (expenses, { text = '', sortBy = 'date' }) => {
     return expenses.filter((expense) => {
         if (expense) {
             const textMatch = expense.title.toLowerCase().includes(text.toLowerCase()) || expense.note.toLowerCase().includes(text.toLowerCase());
-            return textMatch;
+            // const betweenDates = expense.date >= startDate && expense.date <= endDate
+            const betweenDates = true
+            return textMatch && betweenDates;
         }
     }).sort((a, b) => {
         if (sortBy === 'date') {

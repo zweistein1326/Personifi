@@ -2,7 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { searchByText, sortByAmount, sortByDate } from '../../actions/filters';
 import styles from './expenseListFilters.module.css';
-
+import { DateRangePicker } from 'react-dates';
+import moment from 'moment';
 const ExpenseListFilters = (props) => (
     <div id={styles.filters}>
         <input type="text"
@@ -25,7 +26,7 @@ const ExpenseListFilters = (props) => (
             <option value="date">Date</option>
             <option value="amount">Amount</option>
         </select>
-
+        {/* <DateRangePicker startDate={moment()} endDate={moment()} onChange={(e) => { console.log(e) }} onFocusChange={ } /> */}
     </div >
 );
 
