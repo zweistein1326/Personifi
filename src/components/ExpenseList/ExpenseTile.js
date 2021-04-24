@@ -7,12 +7,12 @@ import { startRemoveExpense } from '../../actions/expenses';
 import { BsTrashFill, BsPencil } from 'react-icons/bs'
 import { RiPencilFill } from 'react-icons/ri'
 
-function ExpenseTile({ startRemoveExpense, date, title, amount, id }) {
+function ExpenseTile({ startRemoveExpense, date, title, amount, id, currency }) {
     return (
         <tr className={styles.tile}>
             <td>{moment(date).format('MMMM Do, YYYY')}</td>
             <td>{title}</td>
-            <td>HKD {`${amount / 100}`}</td>
+            <td>{currency || 'SID'} {`${amount / 100}`}</td>
             <td>
                 <Link to={`/editExpense/${id}`} color="red"><RiPencilFill size="18px" color="orange" /></Link>
                 &nbsp;

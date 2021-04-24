@@ -4,6 +4,7 @@ import { SingleDatePicker } from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
 import 'react-dates/initialize';
 import styles from './expenseForm.module.css'
+import SelectCurrency from 'react-select-currency';
 
 
 export default class ExpenseForm extends React.Component {
@@ -15,7 +16,8 @@ export default class ExpenseForm extends React.Component {
             amount: props.expense ? (props.expense.amount / 100).toString() : '',
             date: props.expense ? moment(props.expense.date) : moment(),
             focused: false,
-            error: ''
+            error: '',
+            currency: 'HKD'
         }
     }
 
@@ -39,6 +41,10 @@ export default class ExpenseForm extends React.Component {
     onDateChange = (date) => {
         if (date) { this.setState(() => ({ date })) }
     }
+    onSelectedCurrency = (e) => {
+        const currency = e.target.value;
+        this.setState({ currency })
+    }
 
     handleSubmit = (e) => {
         e.preventDefault()
@@ -53,10 +59,12 @@ export default class ExpenseForm extends React.Component {
                 title: this.state.title,
                 amount: parseFloat(this.state.amount, 10) * 100,
                 date: this.state.date.valueOf(),
-                note: this.state.note
+                note: this.state.note,
+                currency: this.state.currency
             })
         }
     }
+
 
     render() {
         return (
@@ -70,13 +78,22 @@ export default class ExpenseForm extends React.Component {
                         onChange={this.onTitleChange}
                         className={styles.input} />
                     <br />
-                    <input
-                        type="text"
-                        placeholder="Amount"
-                        autoFocus={true}
-                        value={this.state.amount}
-                        onChange={this.onAmountChange}
-                        className={styles.input} />
+                    <div className={styles.amountInput}>
+                        <SelectCurrency
+                            className={styles.input}
+                            value={this.state.currency || 'HKD'}
+                            onChange={this.onSelectedCurrency}
+                            name='currency'
+                        />
+                        <input
+                            type="text"
+                            placeholder="Amount"
+                            autoFocus={true}
+                            value={this.state.amount}
+                            onChange={this.onAmountChange}
+                            className={styles.input}
+                        />
+                    </div>
                     <br />
                     <SingleDatePicker
                         date={this.state.date}

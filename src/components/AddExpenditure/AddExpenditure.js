@@ -5,6 +5,7 @@ import ExpenseForm from '../ExpenseForm/ExpenseForm';
 
 class AddExpenditure extends React.Component {
     onSubmit = (expense) => {
+        console.log(expense);
         this.props.startAddExpense(expense);
         this.props.history.push('/dashboard')
     }
