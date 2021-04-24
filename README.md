@@ -13,4 +13,3 @@ npm run start
 3. Add money splitting between 2 people
 4. Allow operations while inputting amount
 5. Show total by currency
-6. Add confirm remove expense button
