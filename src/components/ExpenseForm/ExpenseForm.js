@@ -87,7 +87,7 @@ export default class ExpenseForm extends React.Component {
                         />
                         <input
                             type="text"
-                            placeholder="Amount"
+                            placeholder="Total Amount"
                             autoFocus={true}
                             value={this.state.amount}
                             onChange={this.onAmountChange}
