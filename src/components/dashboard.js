@@ -7,7 +7,7 @@ import InputBudget from './inputBudget';
 function Dashboard() {
     return (
         <div>
-            {/* <InputBudget /> */}
+            <InputBudget />
             {/* <h3>Monthly expenditure</h3>
             <h2>01.04.2021</h2> */}
             <ExpenseListFilters />

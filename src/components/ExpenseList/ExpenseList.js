@@ -6,7 +6,7 @@ import styles from './expenseList.module.css';
 
 const ExpenseList = (props) => {
 
-    var total = 0;
+    var total = new Map();
     const toggleFilterDate = (e) => {
         e.preventDefault();
         //sort by ascending or descending order of date
@@ -17,18 +17,28 @@ const ExpenseList = (props) => {
         //sort by ascending or descending order of amount
     }
 
-    const calculateTotal = (amount) => {
-        total = total + amount;
+    const calculateTotal = (amount, currency) => {
+        if (total.has(currency)) {
+            var totalAmount = total.get(currency)
+            total.set(currency, amount + totalAmount)
+        }
+        else {
+            total.set(currency, amount)
+        }
     }
 
     props.expenses.forEach((expense) => {
-        calculateTotal(expense.amount);
+        calculateTotal(expense.amount, expense.currency);
     })
+
+    let keys = Array.from(total.keys())
 
     return (
         <div className={styles.expenseList}>
             <h3 className={styles.total}>
-                Total: HKD{total / 100}
+                Total: {keys.map((key, index) =>
+                <p style={{ display: 'inline' }}>{key}{total.get(key) / 100}{index === keys.length - 1 ? "" : "+"}</p>
+            )}
             </h3>
             <table className={styles.expensesTable}>
                 <thead>

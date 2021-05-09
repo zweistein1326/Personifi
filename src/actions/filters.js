@@ -8,3 +8,8 @@ export const searchByText = (searchQuery = '') => ({
     type: 'SEARCH_BY_TEXT',
     text: searchQuery
 })
+export const searchByDate = (startDate = NaN, endDate = NaN) => ({
+    type: 'SEARCH_BY_DATE',
+    startDate,
+    endDate
+})

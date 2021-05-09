@@ -9,10 +9,11 @@ const Header = (props) => (
         <h1 className={styles.title}>Personifi</h1>
         <header className={styles.navbar}>
             {/* <NavLink to='/' exact activeClassName={styles.isActive} className={styles.navLink}>Home</NavLink> */}
-            <NavLink to='/dashboard' exact activeClassName={styles.isActive} className={styles.navLink}>Dashboard</NavLink>
+            {/* <NavLink to='/home' exact activeClassName={styles.isActive} className={styles.navLink}>Dashboard</NavLink> */}
+            <NavLink to='/dashboard' exact activeClassName={styles.isActive} className={styles.navLink}>Expenses</NavLink>
             <NavLink to='/addExpense' activeClassName={styles.isActive} className={styles.navLink}>Add Expense</NavLink>
             {/* <NavLink to='/editExpense' activeClassName='is-active'>Add Expense</NavLink> */}
-            <button onClick={props.startLogout}>Logout</button>
+            <button className={styles.logoutButton} onClick={props.startLogout}>Logout</button>
         </header>
     </div>
 )
