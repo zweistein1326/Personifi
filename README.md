@@ -9,13 +9,12 @@ npm run start
 
 # Upcoming features
 1. Filter by currency
-2. Show expenses between certain dates
-3. Add money splitting between 2 people
+3. Add money splitting between 2 people in expense form
 4. Allow operations while inputting amount
 6. Group expenses by expenditure type (Automatically)
 7. Add cards to the app to track expenses directly
 8. Increase initial loading speed
-
+9. Expand div to see description
 
 ### What is the end goal of this app?
 - Should decrease my monthly expenditure by 20%

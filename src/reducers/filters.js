@@ -1,16 +1,18 @@
-const filterReducerDefaultState = { sortBy: '', text: '', startDate: null, endDate: null }
+const filterReducerDefaultState = { sortBy: 'date', text: '', startDate: null, endDate: null, order: 1 }
 
 export default (state = filterReducerDefaultState, action) => {
     switch (action.type) {
         case 'SORT_BY_DATE':
             return {
                 ...state,
-                sortBy: 'date'
+                sortBy: 'date',
+                order: action.order
             }
         case 'SORT_BY_AMOUNT':
             return {
                 ...state,
-                sortBy: 'amount'
+                sortBy: 'amount',
+                order: action.order
             }
         case 'SEARCH_BY_TEXT':
             return {

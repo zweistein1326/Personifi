@@ -43,9 +43,10 @@ header{
     /* width: 20%; */
     color: var(--red);
     font-weight: bold;
-    /* background-color: var(--red); */
+    background-color: transparent;
     padding: 12px 20px;
-    border: 1px solid #ccc;
+    border: none;
+    font-size: 1rem;
     border-radius: 4px;
     box-sizing: border-box;
 }

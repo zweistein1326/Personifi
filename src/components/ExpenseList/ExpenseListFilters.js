@@ -16,41 +16,46 @@ const ExpenseListFilters = (props) => {
     }
     return (
         <div id={styles.filters}>
-            <input type="text"
-                value={props.filters.text}
-                placeholder="search by title"
-                className={styles.searchInput}
-                onChange={(e) => {
-                    props.dispatch(searchByText(e.target.value));
-                }} />
-            <select value={props.filters.sortBy}
-                className={styles.filterInput}
-                onChange={(e) => {
-                    if (e.target.value === 'date') {
-                        props.dispatch(sortByDate())
-                    }
-                    else if (e.target.value === 'amount') {
-                        props.dispatch(sortByAmount());
-                    }
-                }}>
-                <option value="date">Date</option>
-                <option value="amount">Amount</option>
-            </select>
-            <DateRangePicker
-                startDate={startDate} // momentPropTypes.momentObj or null,
-                endDate={endDate} // momentPropTypes.momentObj or null,
-                onDatesChange={({ startDate, endDate }) => changeDates(startDate, endDate)} // PropTypes.func.isRequired,
-                focusedInput={focused} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
-                onFocusChange={focusedInput => {
-                    changeFocus(focusedInput)
-                }} // PropTypes.func.isRequired,
-                isOutsideRange={(day) => false} //show all months
-                openDirection='down'
-                showClearDates
-                showDefaultInputIcon
-                hideKeyboardShortcutsPanel
-                numberOfMonths={1}
-            />
+            <div className={styles.datepicker}>
+                <DateRangePicker
+                    startDate={startDate} // momentPropTypes.momentObj or null,
+                    endDate={endDate} // momentPropTypes.momentObj or null,
+                    onDatesChange={({ startDate, endDate }) => changeDates(startDate, endDate)} // PropTypes.func.isRequired,
+                    focusedInput={focused} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
+                    onFocusChange={focusedInput => {
+                        changeFocus(focusedInput)
+                    }} // PropTypes.func.isRequired,
+                    isOutsideRange={(day) => false} //show all months
+                    openDirection='down'
+                    showClearDates
+                    showDefaultInputIcon
+                    hideKeyboardShortcutsPanel
+                    numberOfMonths={1}
+                />
+            </div>
+            <div>
+                <input type="text"
+                    value={props.filters.text}
+                    placeholder="search by title"
+                    className={styles.searchInput}
+                    onChange={(e) => {
+                        props.dispatch(searchByText(e.target.value));
+                    }} />
+                {/* <select value={props.filters.sortBy}
+                    className={styles.filterInput}
+                    onChange={(e) => {
+                        if (e.target.value === 'date') {
+                            props.dispatch(sortByDate())
+                        }
+                        else if (e.target.value === 'amount') {
+                            props.dispatch(sortByAmount());
+                        }
+                    }}>
+                    <option value="date">Date</option>
+                    <option value="amount">Amount</option>
+                </select> */}
+            </div>
+
         </div >
     );
 }

@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 
 const Header = (props) => (
     <div className={styles.heading}>
-        <h1 className={styles.title}>Personifi</h1>
+        <h2 className={styles.title}>Personifi</h2>
         <header className={styles.navbar}>
             {/* <NavLink to='/' exact activeClassName={styles.isActive} className={styles.navLink}>Home</NavLink> */}
             {/* <NavLink to='/home' exact activeClassName={styles.isActive} className={styles.navLink}>Dashboard</NavLink> */}
