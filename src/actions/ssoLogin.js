@@ -22,14 +22,16 @@ export const startLoginSSOB = () => {
             if (response.data) {
                 try {
                     const validToken = jwt.verify(response.data, 'secret', { complete: true });
-                    console.log(validToken.payload);
+                    // console.log(validToken);
                     if (validToken.payload) {
                         store.dispatch(login(validToken.payload))
                         store.dispatch(startSetExpenses()).then(() => {
                             renderApp();
-                            console.log('pushing to dashboard');
                             history.push('/dashboard');
                         })
+                    }
+                    else {
+
                     }
                 }
                 catch (e) {

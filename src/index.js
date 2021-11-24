@@ -42,6 +42,7 @@ ReactDOM.render(
 
 
 firebase.auth().onAuthStateChanged((user) => {
+  console.log('auth state changed');
   if (user) {
     store.dispatch(login(user.uid))
     store.dispatch(startSetExpenses()).then(() => {
@@ -51,11 +52,12 @@ firebase.auth().onAuthStateChanged((user) => {
       }
     })
   }
-  else {
-    store.dispatch(logout())
-    renderApp();
-    history.push('/');
-  }
+  
+  // else {
+  //   store.dispatch(logout())
+  //   renderApp();
+  //   history.push('/');
+  // }
 })
 
 renderApp();
