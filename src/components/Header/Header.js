@@ -3,10 +3,12 @@ import { NavLink } from 'react-router-dom';
 import styles from './header.module.css';
 import { startLogout } from '../../actions/auth'
 import { connect } from 'react-redux';
+import auth from '../../reducers/auth';
 
-const Header = (props) => (
+const Header = (state, props) => (
     <div className={styles.heading}>
         <h2 className={styles.title}>Personifi</h2>
+        <h2 className={styles.title}>Hi {state.auth.username ? `${state.auth.firstname} ${state.auth.lastname}` : 'Anon'}</h2>
         <header className={styles.navbar}>
             {/* <NavLink to='/' exact activeClassName={styles.isActive} className={styles.navLink}>Home</NavLink> */}
             {/* <NavLink to='/home' exact activeClassName={styles.isActive} className={styles.navLink}>Dashboard</NavLink> */}
@@ -18,9 +20,13 @@ const Header = (props) => (
     </div>
 )
 
+const mapStateToProps = (state) => ({
+    auth: state.auth,
+})
+
 const mapDispatchToProps = (dispatch) => ({
     startLogout: () => dispatch(startLogout())
 })
 
 
-export default connect(undefined, mapDispatchToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

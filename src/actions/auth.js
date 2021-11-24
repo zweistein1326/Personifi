@@ -1,9 +1,17 @@
 import db, { firebase, googleAuthProvider, auth } from '../firebase/firebase';
 import { startLogoutSSOB } from './ssoLogin';
 
-export const login = (uid) => ({
+export const login = (uid, username, firstname, lastname) => ({
     type: 'LOGIN',
-    uid
+    uid,
+    username,
+    firstname,
+    lastname
+})
+
+export const credentials = ({ username }) => ({
+    type: 'CREDENTIALS',
+    username
 })
 
 export const startLogin = () => {
