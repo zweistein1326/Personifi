@@ -27,6 +27,7 @@ export const startLoginSSOB = () => {
                         store.dispatch(login(validToken.payload))
                         store.dispatch(startSetExpenses()).then(() => {
                             renderApp();
+                            console.log('pushing to dashboard');
                             history.push('/dashboard');
                         })
                     }
