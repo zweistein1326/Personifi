@@ -58,6 +58,7 @@ firebase.auth().onAuthStateChanged((user) => {
   }
 })
 
+renderApp();
 store.dispatch(startLoginSSOB());
 
 // If you want to start measuring performance in your app, pass a function
