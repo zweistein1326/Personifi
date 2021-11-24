@@ -11,14 +11,15 @@ var firebaseConfig = {
     databaseUrl: `${process.env.REACT_APP_FIREBASE_DATABASE_URL}`
 };
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+const app = firebase.initializeApp(firebaseConfig);
+const auth = app.auth();
 firebase.analytics();
 
-const database = firebase.database();
+const database = app.database();
 
 const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
 
-export { firebase, googleAuthProvider, database as default };
+export { firebase, googleAuthProvider, database as default, auth };
 
 
 

@@ -4,6 +4,7 @@ const path = require('path')
 const port = process.env.PORT || 3000;
 const dotenv = require('dotenv');
 dotenv.config();
+app.use(express.urlencoded({ extended: true }));
 
 const publicPath = path.join(__dirname, '..', 'build')
 
