@@ -39,3 +39,8 @@ export const startLoginSSOB = () => {
     }
 }
 
+export const startLogoutSSOB = () => {
+    store.dispatch(logout())
+    renderApp();
+    history.push('/');
+}

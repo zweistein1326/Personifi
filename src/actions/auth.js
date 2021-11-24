@@ -1,4 +1,5 @@
 import db, { firebase, googleAuthProvider, auth } from '../firebase/firebase';
+import { startLogoutSSOB } from './ssoLogin';
 
 export const login = (uid) => ({
     type: 'LOGIN',
@@ -17,6 +18,8 @@ export const logout = () => ({
 
 export const startLogout = () => {
     return (dispatch) => {
-        return firebase.auth().signOut()
+        //if auth provider == firebase
+        // return firebase.auth().signOut()
+        dispatch(startLogoutSSOB());
     }
 }
