@@ -3,7 +3,7 @@ import { firebase, googleAuthProvider } from '../firebase/firebase';
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { startSetExpenses } from './expenses';
 import { renderApp, store } from '..';
-import { login } from './auth';
+import { login, logout } from './auth';
 import { history } from '../routers/appRouter';
 
 const jwt = require('jsonwebtoken');
@@ -40,6 +40,7 @@ export const startLoginSSOB = () => {
 }
 
 export const startLogoutSSOB = () => {
+    // switch off connection to SSO and next time will redirect to Login page
     store.dispatch(logout())
     renderApp();
     history.push('/');
