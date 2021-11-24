@@ -9,10 +9,11 @@ import { history } from '../routers/appRouter';
 const jwt = require('jsonwebtoken');
 
 export const startLoginSSOB = () => {
+    console.log('starting login');
     const ssobUrl = 'http://localhost:3000/'
-    window.open(ssobUrl, '_blank');
+    // window.open(ssobUrl, '_blank');
     return async (dispatch) => {
-        await axios.get(ssobUrl + 'ssoLogin', {
+        axios.get(ssobUrl + 'ssoLogin', {
             headers: {
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin': '*'
@@ -21,15 +22,13 @@ export const startLoginSSOB = () => {
             if (response.data) {
                 try {
                     const validToken = jwt.verify(response.data, 'secret', { complete: true });
-                    console.log(validToken);
+                    console.log(validToken.payload);
                     if (validToken.payload) {
                         store.dispatch(login(validToken.payload))
-                        store.dispatch(startSetExpenses().then(() => {
+                        store.dispatch(startSetExpenses()).then(() => {
                             renderApp();
-                            if (history.location.pathname === '/') {
-                                history.push('/dashboard');
-                            }
-                        }))
+                            history.push('/dashboard');
+                        })
                     }
                 }
                 catch (e) {

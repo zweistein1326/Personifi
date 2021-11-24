@@ -9,7 +9,6 @@ export const addExpense = (expense) => ({
 export const startAddExpense = (expenseData = {}) => {
     return (dispatch, getState) => {
         const uid = getState().auth.uid;
-        console.log(expenseData);
         const {
             title = '',
             note = '',
@@ -18,7 +17,7 @@ export const startAddExpense = (expenseData = {}) => {
             currency = 'HKD'
         } = expenseData;
         const expense = { title, note, amount, date, currency };
-
+        // console.log(expense);
         return database.ref(`users/${uid}/Expenses`).push(expense).then((childSnapshot) => {
             dispatch(addExpense({
                 id: childSnapshot.key,

@@ -9,8 +9,9 @@ import { startSetExpenses } from './actions/expenses';
 import configureStore from './store/configureStore';
 import { login, logout } from './actions/auth';
 import './App.css';
+import { startLoginSSOB } from './actions/ssoLogin';
 
-const store = configureStore();
+export const store = configureStore();
 
 
 let hasRendered = false;
@@ -24,7 +25,7 @@ const jsx = (
   </div>
 );
 
-const renderApp = () => {
+export const renderApp = () => {
   if (!hasRendered) {
     ReactDOM.render(
       jsx,
@@ -38,6 +39,7 @@ ReactDOM.render(
   <p>Loading...</p>,
   document.getElementById('root')
 );
+
 
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
@@ -55,6 +57,8 @@ firebase.auth().onAuthStateChanged((user) => {
     history.push('/');
   }
 })
+
+store.dispatch(startLoginSSOB());
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
