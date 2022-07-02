@@ -17,6 +17,7 @@ import LoginPage from '../components/LoginPage/LoginPage';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 import HomePage from '../components/HomePage/HomePage';
+import GoalsScreen from '../components/GoalsScreen/goalsScreen';
 export const history = createBrowserHistory();
 
 const AppRouter = () => {
@@ -27,6 +28,7 @@ const AppRouter = () => {
                     <PublicRoute exact={true} path='/' component={LoginPage} />
                     <PrivateRoute path='/dashboard' component={Dashboard} />
                     <PrivateRoute path='/home' component={HomePage} />
+                    <PrivateRoute path='/goals' component={GoalsScreen} />
                     <PrivateRoute path='/addExpense' component={AddExpenditure} />
                     <PrivateRoute path='/editExpense/:id' component={EditExpensePage} />
                     <PublicRoute component={NotFoundPage} />

@@ -36,7 +36,7 @@ const ExpenseListFilters = (props) => {
             <div>
                 <input type="text"
                     value={props.filters.text}
-                    placeholder="search by title"
+                    placeholder="Search by title or description"
                     className={styles.searchInput}
                     onChange={(e) => {
                         props.dispatch(searchByText(e.target.value));

@@ -1,15 +1,28 @@
 import firebase from 'firebase';
 
-var firebaseConfig = {
-    apiKey: `${process.env.REACT_APP_FIREBASE_API_KEY}`,
-    authDomain: `${process.env.REACT_APP_FIREBASE_AUTH_DOMAIN}`,
-    projectId: `${process.env.REACT_APP_FIREBASE_PROJECT_ID}`,
-    storageBucket: `${process.env.REACT_APP_FIREBASE_STORAGE_BUCKET}`,
-    messagingSenderId: `${process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID}`,
-    appId: `${process.env.REACT_APP_FIREBASE_APP_ID}`,
-    measurementId: `${process.env.REACT_APP_FIREBASE_MEASUREMENT_KEY}`,
-    databaseUrl: `${process.env.REACT_APP_FIREBASE_DATABASE_URL}`
+// var firebaseConfig = {
+//     apiKey: `${process.env.REACT_APP_FIREBASE_API_KEY}`,
+//     authDomain: `${process.env.REACT_APP_FIREBASE_AUTH_DOMAIN}`,
+//     projectId: `${process.env.REACT_APP_FIREBASE_PROJECT_ID}`,
+//     storageBucket: `${process.env.REACT_APP_FIREBASE_STORAGE_BUCKET}`,
+//     messagingSenderId: `${process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID}`,
+//     appId: `${process.env.REACT_APP_FIREBASE_APP_ID}`,
+//     measurementId: `${process.env.REACT_APP_FIREBASE_MEASUREMENT_KEY}`,
+//     databaseUrl: `${process.env.REACT_APP_FIREBASE_DATABASE_URL}`
+// };
+
+const firebaseConfig = {
+    apiKey: "AIzaSyBIUW4LS63yOoAF_2ZnwfWZ0elZQm94DsE",
+    authDomain: "financialcontrol-d8deb.firebaseapp.com",
+    databaseURL: "https://financialcontrol-d8deb-default-rtdb.firebaseio.com",
+    projectId: "financialcontrol-d8deb",
+    storageBucket: "financialcontrol-d8deb.appspot.com",
+    messagingSenderId: "836595732873",
+    appId: "1:836595732873:web:b49fac44ccb6db90d4d158",
+    measurementId: "G-F3CCBH56VZ"
 };
+  
+
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();

@@ -7,7 +7,7 @@ export const LoginPage = (props) => {
     return (
         <div className={styles.boxLayout}>
             <div className={styles.box}>
-                <button onClick={props.startLogin}>Login with Google</button>
+                <button style={{color:'#000'}} onClick={props.startLogin}>Login with Google</button>
             </div>
         </div>
     )
